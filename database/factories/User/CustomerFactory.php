@@ -41,8 +41,8 @@ class CustomerFactory extends Factory
     {
         return $this->state(function (array $attributes) use ($lengthUser,$lengthProfile) {
             return [
-                'profile_id' => fake()->numberBetween(1, $lengthProfile), // Utiliser l'ID du profil sélectionné
-                'user_id' => fake()->numberBetween(1,$lengthUser)  // Custom user_id range
+                'profile_id' => fake()->numberBetween(19, 18+$lengthProfile), // Utiliser l'ID du profil sélectionné
+                'user_id' => fake()->numberBetween(53,52+$lengthUser)  // Custom user_id range
             ];
         });
     }

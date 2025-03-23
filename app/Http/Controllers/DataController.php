@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lead\Budget;
 use App\Models\Lead\Contract;
+use App\Models\Lead\Depense;
 use App\Models\Lead\Lead;
 use App\Models\Lead\Ticket;
 use App\Models\User\Customer;
@@ -57,6 +59,18 @@ class DataController extends Controller
         $contracts = Contract::factory()->withParameter(count($leads),count($users),count($customers))->count(10)->make();
 
         foreach ($contracts as $user) {
+            $list[] = $user->getInsertString();
+        }
+
+        $budgets = Budget::factory()->withParameter(count($customers))->count(15)->make();
+
+        foreach ($budgets as $user) {
+            $list[] = $user->getInsertString();
+        }
+
+        $depense = Depense::factory()->withParameter(count($tickets),count($budgets),count($leads))->count(20)->make();
+
+        foreach ($depense as $user) {
             $list[] = $user->getInsertString();
         }
         return $list;

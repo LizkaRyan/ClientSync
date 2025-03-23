@@ -40,9 +40,9 @@ class ContractFactory extends Factory
     {
         return $this->state(function (array $attributes) use ($lengthUser,$lengthCustomer,$lengthLead) {
             return [
-                'lead_id' => fake()->numberBetween(1, $lengthLead), // Peut être mis à jour avec un objet de relation
-                'user_id' => fake()->numberBetween(1, $lengthUser), // Peut être mis à jour avec un objet de relation
-                'customer_id' => fake()->numberBetween(1, $lengthCustomer), // Peut être mis à jour avec un objet de relation
+                'lead_id' => fake()->numberBetween(56, 55+$lengthLead), // Peut être mis à jour avec un objet de relation
+                'user_id' => fake()->numberBetween(53, 52+$lengthUser), // Peut être mis à jour avec un objet de relation
+                'customer_id' => fake()->numberBetween(43, 42+$lengthCustomer), // Peut être mis à jour avec un objet de relation
             ];
         });
     }

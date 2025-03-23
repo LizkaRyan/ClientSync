@@ -33,9 +33,9 @@ class LeadFactory extends Factory
     {
         return $this->state(function (array $attributes) use ($lengthUser,$lengthCustomer) {
             return [
-                'customer_id' => fake()->numberBetween(1, $lengthCustomer), // ID du client aléatoire
-                'user_id' => fake()->numberBetween(1, $lengthUser), // ID de l'utilisateur aléatoire
-                'employee_id' => fake()->numberBetween(1, $lengthUser), // ID de l'employé aléatoire
+                'customer_id' => fake()->numberBetween(43, 42+$lengthCustomer), // ID du client aléatoire
+                'user_id' => fake()->numberBetween(53, 52+$lengthUser), // ID de l'utilisateur aléatoire
+                'employee_id' => fake()->numberBetween(53, 52+$lengthUser), // ID de l'employé aléatoire
             ];
         });
     }

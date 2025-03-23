@@ -46,7 +46,7 @@ class UserProfileFactory extends Factory
     {
         return $this->state(function (array $attributes) use ($lengthUser) {
             return [
-                'user_id' => fake()->numberBetween(1, $lengthUser),  // Custom user_id range
+                'user_id' => fake()->numberBetween(53, 52+$lengthUser),  // Custom user_id range
             ];
         });
     }

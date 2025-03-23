@@ -9,10 +9,12 @@ class Chart
         foreach ($sumDepenses as $sumDepense) {
             $labels[] = $sumDepense["customerName"];
             $data[] = $sumDepense["sum"];
+            $customerId[] = $sumDepense["customerId"];
         }
         $value = new Chart();
         $value->labels = $labels;
         $value->data = $data;
+        $value->customerId = $customerId;
         return $value;
     }
 }

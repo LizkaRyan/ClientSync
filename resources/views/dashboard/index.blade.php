@@ -1,5 +1,5 @@
 @extends('template/template')
-@section('title','Dashborad')
+@section('title','Dashboard')
 @section('content')
     <div class="row">
         <div class="col-lg-12">
