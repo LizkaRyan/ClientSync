@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service\DepenseService;
+use Illuminate\Http\Request;
 
 class DepenseController extends Controller
 {
@@ -46,11 +47,23 @@ class DepenseController extends Controller
         }
     }
 
-    public function update(int $depenseId){
+    public function updateForm(int $depenseId,float $amount,Request $request){
+        $request->session()->put('depenseId',$depenseId);
+        $data["amount"]=$amount;
+        return view('depense.form-update',$data);
+    }
 
+    public function update(Request $request){
+        $request->validate([
+            'amount'=>'required|numeric|min:1',
+        ]);
+        $idDepense=$request->session()->get('depenseId');
+        $this->depenseService->update($idDepense,$request->input("amount"));
+        return redirect('/dashboard');
     }
 
     public function delete(int $depenseId){
-
+        $this->depenseService->delete($depenseId);
+        return redirect('/dashboard');
     }
 }

@@ -36,4 +36,24 @@ final class DepenseService
         }
         return $response->json();
     }
+
+    public function update(int $idDepense,float $amount){
+        $response = Http::get('localhost:8080/api/depense/update/'.$idDepense.'/'.$amount);
+
+        // Vérifier la réponse
+        if (!$response->successful()) {
+            throw new Exception("Erreur du fournisseur d'identite"); // Convertit la réponse JSON en tableau PHP
+        }
+        return $response->json();
+    }
+
+    public function delete(int $idDepense){
+        $response = Http::get('localhost:8080/api/depense/delete/'.$idDepense);
+
+        // Vérifier la réponse
+        if (!$response->successful()) {
+            throw new Exception("Erreur du fournisseur d'identite"); // Convertit la réponse JSON en tableau PHP
+        }
+        return $response->json();
+    }
 }

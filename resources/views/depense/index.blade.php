@@ -25,7 +25,7 @@
                                 <td>{{$depense["amount"]}}</td>
                                 <td>{{$depense["customerName"]}}</td>
                                 <td>{{$depense["cause"]}}</td>
-                                <td><a href="/depense/update/{{$depense["idDepense"]}}">Modifier</a></td>
+                                <td><a href="/depense/update/{{$depense["idDepense"]}}/{{$depense["amount"]}}">Modifier</a></td>
                                 <td><a href="/depense/delete/{{$depense["idDepense"]}}">Supprimer</a></td>
                             </tr>
                             @endforeach
