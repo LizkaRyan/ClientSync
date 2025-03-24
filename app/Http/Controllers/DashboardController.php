@@ -27,10 +27,24 @@ class DashboardController extends Controller
             $data["statistique"]["totalDepense"]=$totalDepense;
             $data["statistique"]["sumDepense"]=$sumDepense;
             $data["statistique"]["sumDepenseBudget"]=$sumDepenseBudget;
+            $data["countTicket"]=$reponse["data"]["countTicket"];
+            $data["countCustomer"]=$reponse["data"]["countCustomer"];
+            $data["countLead"]=$reponse["data"]["countLead"];
             return view('dashboard.index',$data);
         }
         else{
             dd('Misy erreur lty a!',$reponse);
+        }
+    }
+
+    public function findCustomer(){
+        $reponse=$this->dashboardService->findCustomer();
+        if($reponse["code"]==200){
+            $data["customers"]=$reponse["data"];
+            return view('customer.index',$data);
+        }
+        else{
+            dd("Misy erreur izy zany",$reponse);
         }
     }
 }

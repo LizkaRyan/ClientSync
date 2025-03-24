@@ -17,6 +17,26 @@ final class DepenseService
         return $response->json();
     }
 
+    public function findDepenseLead(){
+        $response = Http::get('localhost:8080/api/depense/lead');
+
+        // Vérifier la réponse
+        if (!$response->successful()) {
+            throw new Exception("Erreur du fournisseur d'identite"); // Convertit la réponse JSON en tableau PHP
+        }
+        return $response->json();
+    }
+
+    public function findDepenseTicket(){
+        $response = Http::get('localhost:8080/api/depense/ticket');
+
+        // Vérifier la réponse
+        if (!$response->successful()) {
+            throw new Exception("Erreur du fournisseur d'identite"); // Convertit la réponse JSON en tableau PHP
+        }
+        return $response->json();
+    }
+
     public function findDepenseLeadByCustomerId(int $customerId){
         $response = Http::get('localhost:8080/api/depense/lead/'.$customerId);
 
