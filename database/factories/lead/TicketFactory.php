@@ -34,9 +34,9 @@ class TicketFactory extends Factory
     {
         return $this->state(function (array $attributes) use ($lengthUser,$lengthCustomer) {
             return [
-                'customer_id' => fake()->numberBetween(1, $lengthCustomer), // Peut être défini via des relations
-                'manager_id' => fake()->numberBetween(1, $lengthUser), // Peut être défini via des relations
-                'employee_id' => fake()->numberBetween(1, $lengthUser), // Peut être défini via des relations
+                'customer_id' => fake()->numberBetween(43, 42+$lengthCustomer), // Peut être défini via des relations
+                'manager_id' => fake()->numberBetween(53, 52+$lengthUser), // Peut être défini via des relations
+                'employee_id' => fake()->numberBetween(53, 52+$lengthUser), // Peut être défini via des relations
             ];
         });
     }
