@@ -16,3 +16,8 @@ Route::prefix('/depense')->name('depense.')->group(function () {
     Route::get('/delete/{depenseId}',[\App\Http\Controllers\DepenseController::class,'delete'])->name('delete');
     Route::post('/update',[\App\Http\Controllers\DepenseController::class,'update'])->name('update');
 });
+
+Route::prefix('/seuil')->name('seuil.')->group(function () {
+    Route::get('',[\App\Http\Controllers\SeuilController::class,'index'])->name('index');
+    Route::post('',[\App\Http\Controllers\SeuilController::class,'save'])->name('save');
+});
