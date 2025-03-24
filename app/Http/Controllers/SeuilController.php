@@ -31,6 +31,7 @@ class SeuilController extends Controller
         ]);
         $response=$this->seuilService->save($request->input("taux"));
         if($response["code"]==200){
+            $request->session()->put('admin',true);
             return redirect()->route('seuil.index');
         }
         else{
