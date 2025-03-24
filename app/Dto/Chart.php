@@ -17,4 +17,16 @@ class Chart
         $value->customerId = $customerId;
         return $value;
     }
+
+    public static function transformIntoDataChartSum($sumDepenses){
+        $labels = [];
+        foreach ($sumDepenses as $sumDepense) {
+            $labels[] = $sumDepense["budgetName"];
+            $data[] = $sumDepense["sum"];
+        }
+        $value = new Chart();
+        $value->labels = $labels;
+        $value->data = $data;
+        return $value;
+    }
 }

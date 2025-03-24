@@ -17,17 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }]
         },
         options: {
-            responsive: true, // Rend le graphique responsive
+            indexAxis: 'y', // Rend les barres horizontales
+            responsive: true,
             scales: {
-                y: {
-                    beginAtZero: true // Commence l'axe Y à 0
-                }
+                x: { beginAtZero: true }, // Axe X commence à 0
+                y: { beginAtZero: false } // Axe Y automatique
+            },
+            plugins: {
+                legend: { position: 'top' }
             },
             onClick: (event, elements) => {
                 // Vérifie si un élément a été cliqué
                 if (elements.length > 0) {
-                    const elementIndex = elements[0]._index; // Récupère l'index du bâton cliqué
-                    const datasetIndex = elements[0]._datasetIndex; // Récupère l'index du dataset
+                    const elementIndex = elements[0].index; // Récupère l'index du bâton cliqué
+                    const datasetIndex = elements[0].datasetIndex; // Récupère l'index du dataset
 
                     const customerId = myBarChart.data.datasets[datasetIndex].customerId[elementIndex];
 
