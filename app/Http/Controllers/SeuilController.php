@@ -14,8 +14,8 @@ class SeuilController extends Controller
         $this->seuilService = $seuilService;
     }
 
-    public function index(){
-        $response=$this->seuilService->findActualSeuil();
+    public function index(Request $request){
+        $response=$this->seuilService->findActualSeuil($request->session()->get('token'));
         if($response["code"]==200){
             $data["rate"]=$response["data"]["tauxSeuil"];
             return view('seuil.index',$data);
@@ -29,7 +29,7 @@ class SeuilController extends Controller
         $request->validate([
             "taux"=>"required|numeric|min:1|max:100",
         ]);
-        $response=$this->seuilService->save($request->input("taux"));
+        $response=$this->seuilService->save($request->input("taux"),$request->session()->get('token'));
         if($response["code"]==200){
             $request->session()->put('admin',true);
             return redirect()->route('seuil.index');

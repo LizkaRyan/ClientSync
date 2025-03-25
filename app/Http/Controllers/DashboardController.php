@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dto\Chart;
 use App\Service\DashboardService;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -14,8 +15,8 @@ class DashboardController extends Controller
         $this->dashboardService = $dashboardService;
     }
 
-    public function index(){
-        $reponse=$this->dashboardService->getData();
+    public function index(Request $request){
+        $reponse=$this->dashboardService->getData($request->session()->get('token'));
         if($reponse["code"]==200){
             $totalDepense=Chart::transformIntoDataChart($reponse["data"]["totalDepense"]);
             $totalTicketDepense=Chart::transformIntoDataChart($reponse["data"]["totalTicketDepense"]);
@@ -37,8 +38,8 @@ class DashboardController extends Controller
         }
     }
 
-    public function findCustomer(){
-        $reponse=$this->dashboardService->findCustomer();
+    public function findCustomer(Request $request){
+        $reponse=$this->dashboardService->findCustomer($request->session()->get('token'));
         if($reponse["code"]==200){
             $data["customers"]=$reponse["data"];
             return view('customer.index',$data);

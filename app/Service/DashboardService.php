@@ -7,8 +7,9 @@ use Mockery\Exception;
 
 final class DashboardService
 {
-    public function getData(){
-        $response = Http::get('localhost:8080/api/dashboard');
+    public function getData(string $token){
+        $response = Http::withHeader('Authorization',$token)
+        ->get('localhost:8080/api/dashboard');
 
         // Vérifier la réponse
         if (!$response->successful()) {
@@ -17,8 +18,9 @@ final class DashboardService
         return $response->json();
     }
 
-    public function findCustomer(){
-        $response = Http::get('localhost:8080/api/customer');
+    public function findCustomer(string $token){
+        $response = Http::withHeader('Authorization',$token)
+        ->get('localhost:8080/api/customer');
 
         // Vérifier la réponse
         if (!$response->successful()) {
