@@ -7,8 +7,9 @@ use Mockery\Exception;
 
 final class SeuilService
 {
-    public function findActualSeuil(){
-        $response = Http::get('localhost:8080/api/seuil');
+    public function findActualSeuil(string $token){
+        $response = Http::withHeader('Authorization',$token)
+        ->get('localhost:8080/api/seuil');
 
         // Vérifier la réponse
         if (!$response->successful()) {
@@ -17,8 +18,9 @@ final class SeuilService
         return $response->json();
     }
 
-    public function save($taux){
-        $response = Http::get('localhost:8080/api/seuil/save/'.$taux);
+    public function save($taux,string $token){
+        $response = Http::withHeader('Authorization',$token)
+        ->get('localhost:8080/api/seuil/save/'.$taux);
 
         // Vérifier la réponse
         if (!$response->successful()) {

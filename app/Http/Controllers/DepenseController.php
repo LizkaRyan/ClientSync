@@ -14,8 +14,8 @@ class DepenseController extends Controller
         $this->depenseService = $depenseService;
     }
 
-    public function findDepenseTicketDepense(int $customerId){
-        $reponse=$this->depenseService->findDepenseTicketByCustomerId($customerId);
+    public function findDepenseTicketDepense(int $customerId,Request $request){
+        $reponse=$this->depenseService->findDepenseTicketByCustomerId($customerId,$request->session()->get('token'));
         if($reponse["code"]==200){
             $data["depenses"]=$reponse["data"];
             return view('depense.index',$data);
@@ -25,8 +25,8 @@ class DepenseController extends Controller
         }
     }
 
-    public function findDepenseTicket(){
-        $reponse=$this->depenseService->findDepenseTicket();
+    public function findDepenseTicket(Request $request){
+        $reponse=$this->depenseService->findDepenseTicket($request->session()->get('token'));
         if($reponse["code"]==200){
             $data["depenses"]=$reponse["data"];
             return view('depense.index',$data);
@@ -36,8 +36,8 @@ class DepenseController extends Controller
         }
     }
 
-    public function findDepenseLead(){
-        $reponse=$this->depenseService->findDepenseLead();
+    public function findDepenseLead(Request $request){
+        $reponse=$this->depenseService->findDepenseLead($request->session()->get('token'));
         if($reponse["code"]==200){
             $data["depenses"]=$reponse["data"];
             return view('depense.index',$data);
@@ -47,8 +47,8 @@ class DepenseController extends Controller
         }
     }
 
-    public function findDepenseLeadDepense(int $customerId){
-        $reponse=$this->depenseService->findDepenseLeadByCustomerId($customerId);
+    public function findDepenseLeadDepense(int $customerId,Request $request){
+        $reponse=$this->depenseService->findDepenseLeadByCustomerId($customerId,$request->session()->get('token'));
         if($reponse["code"]==200){
             $data["depenses"]=$reponse["data"];
             return view('depense.index',$data);
@@ -58,8 +58,8 @@ class DepenseController extends Controller
         }
     }
 
-    public function findDepenseByCustomerId(int $customerId){
-        $reponse=$this->depenseService->findDepenseByCustomerId($customerId);
+    public function findDepenseByCustomerId(int $customerId,Request $request){
+        $reponse=$this->depenseService->findDepenseByCustomerId($customerId,$request->session()->get('token'));
         if($reponse["code"]==200){
             $data["depenses"]=$reponse["data"];
             return view('depense.index',$data);
@@ -80,12 +80,12 @@ class DepenseController extends Controller
             'amount'=>'required|numeric|min:1',
         ]);
         $idDepense=$request->session()->get('depenseId');
-        $this->depenseService->update($idDepense,$request->input("amount"));
+        $this->depenseService->update($idDepense,$request->input("amount"),$request->session()->get('token'));
         return redirect('/dashboard');
     }
 
-    public function delete(int $depenseId){
-        $this->depenseService->delete($depenseId);
+    public function delete(int $depenseId,Request $request){
+        $this->depenseService->delete($depenseId,$request->session()->get('token'));
         return redirect('/dashboard');
     }
 }
