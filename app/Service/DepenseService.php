@@ -85,6 +85,20 @@ final class DepenseService
         return $response->json();
     }
 
+    public function confirmUpdate($amount,int $idDepense,string $token){
+        $response = Http::withHeaders([
+            'Authorization' => $token
+        ])
+        ->get('localhost:8080/api/depense/confirm/update',["amount"=>$amount,"idDepense"=>$idDepense]);
+
+        // Vérifier la réponse
+        if (!$response->successful()) {
+            throw new Exception("Erreur du fournisseur d'identite"); // Convertit la réponse JSON en tableau PHP
+        }
+
+        return $response->json();
+    }
+
     public function delete(int $idDepense,string $token){
         $response = Http::withHeaders([
             'Authorization' => $token

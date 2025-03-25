@@ -80,7 +80,25 @@ class DepenseController extends Controller
             'amount'=>'required|numeric|min:1',
         ]);
         $idDepense=$request->session()->get('depenseId');
-        $this->depenseService->update($idDepense,$request->input("amount"),$request->session()->get('token'));
+        $amount=$request->input('amount');
+        $response=$this->depenseService->update($idDepense,$amount,$request->session()->get('token'));
+        if($response["code"]==200){
+            return redirect('/dashboard');
+        }
+        else{
+            $request->session()->put('amount',$amount);
+            return view('depense/alert');
+        }
+    }
+
+    public function confirmUpdate(Request $request){
+        $response=$this->depenseService->confirmUpdate($request->session()->get('amount'),$request->session()->get('depenseId'),$request->session()->get('token'));
+        return redirect('/dashboard');
+    }
+
+    public function rejectUpdate(Request $request){
+        $request->session()->put("amount",null);
+        $request->session()->put("depenseId",null);
         return redirect('/dashboard');
     }
 
