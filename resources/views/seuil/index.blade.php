@@ -9,6 +9,16 @@
                     <form action="/seuil" method="post">
                         @csrf
 
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        
                         <label class="m-t-20" for="name">Rate:</label>
                         <div class="input-group">
                             <input type="number" id="name" value="{{$rate}}" name="taux" class="form-control">

@@ -20,6 +20,16 @@
                         <li><a href="/dashboard">Dashboard</a></li>
                     </ul>
                 </li>
+                <li class="nav-small-cap">--- Seuil</li>
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)">
+                        <i class="fas fa-cogs"></i>
+                        <span class="hide-menu">Seuil</span>
+                    </a>
+                    <ul class="collapse">
+                        <li><a href="/dashboard">Update seuil</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->
