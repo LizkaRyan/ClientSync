@@ -19,6 +19,8 @@ Route::prefix('/login')->name('login.')->group(function(){
         Route::get('/update/{depenseId}/{amount}',[\App\Http\Controllers\DepenseController::class,'updateForm'])->name('update.form');
         Route::get('/delete/{depenseId}',[\App\Http\Controllers\DepenseController::class,'delete'])->name('delete');
         Route::post('/update',[\App\Http\Controllers\DepenseController::class,'update'])->name('update');
+        Route::get('/confirm/update',[\App\Http\Controllers\DepenseController::class,'confirmUpdate'])->name('update.confirm');
+        Route::get('/reject/update',[\App\Http\Controllers\DepenseController::class,'rejectUpdate'])->name('reject.confirm');
     });
 
     Route::prefix('/dashboard')->name('dashboard.')->group(function () {
