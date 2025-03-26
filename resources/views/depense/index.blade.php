@@ -25,8 +25,8 @@
                                 <td>{{$depense["amount"]}}</td>
                                 <td>{{$depense["customerName"]}}</td>
                                 <td>{{$depense["cause"]}}</td>
-                                <td><a href="/depense/update/{{$depense["idDepense"]}}/{{$depense["amount"]}}">Modifier</a></td>
-                                <td><a href="/depense/delete/{{$depense["idDepense"]}}">Supprimer</a></td>
+                                <td><a class="btn btn-primary" href="/depense/update/{{$depense["idDepense"]}}/{{$depense["amount"]}}"><i class="fas fa-edit"></i></a></td>
+                                <td><a class="btn btn-primary" href="/depense/delete/{{$depense["idDepense"]}}"><i class="mdi mdi-delete"></i></a></td>
                             </tr>
                             @endforeach
                             </tbody>

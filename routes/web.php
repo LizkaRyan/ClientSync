@@ -9,7 +9,7 @@ Route::prefix('/login')->name('login.')->group(function(){
     Route::post('',[\App\Http\Controllers\LoginController::class,'login'])->name("launch");
 });
 
-//Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
+Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
     Route::prefix('/depense')->name('depense.')->group(function () {
         Route::get('/ticket',[\App\Http\Controllers\DepenseController::class,'findDepenseTicket'])->name('ticket');    
         Route::get('/lead',[\App\Http\Controllers\DepenseController::class,'findDepenseLead'])->name('lead');    
@@ -33,4 +33,4 @@ Route::prefix('/login')->name('login.')->group(function(){
     });
 
     Route::get('/customer',[\App\Http\Controllers\DashboardController::class,'findCustomer'])->name('client');
-//});
+});
