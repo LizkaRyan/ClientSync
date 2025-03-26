@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PdfExportController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/generate/data',[\App\Http\Controllers\DataController::class,'index'])->name('form');
@@ -33,4 +34,10 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
     });
 
     Route::get('/customer',[\App\Http\Controllers\DashboardController::class,'findCustomer'])->name('client');
+
+    Route::get('/customer/upload/form',[\App\Http\Controllers\DashboardController::class,'uploadForm'])->name('uplodadForm');
+    Route::post('/customer/upload',[\App\Http\Controllers\DashboardController::class,'upload'])->name('upload');
+
 });
+
+Route::get('/export-pdf',[\App\Http\Controllers\PdfExportController::class,'generatePdf'])->name("export");

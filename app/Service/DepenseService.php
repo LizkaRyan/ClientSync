@@ -89,7 +89,10 @@ final class DepenseService
         $response = Http::withHeaders([
             'Authorization' => $token
         ])
-        ->get('localhost:8080/api/depense/confirm/update',["amount"=>$amount,"idDepense"=>$idDepense]);
+        ->post('localhost:8080/api/depense/confirm/update',[
+            'amount'=>(float)$amount,
+            'idDepense'=>$idDepense
+        ]);
 
         // Vérifier la réponse
         if (!$response->successful()) {
