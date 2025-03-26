@@ -15,7 +15,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->session()->get('admin')!=null) {
+        if($request->session()->get('token')!=null) {
             return $next($request);
         }
         return redirect('/login');
