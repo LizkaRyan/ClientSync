@@ -21,13 +21,11 @@ class LoginController extends Controller
         ]);
         $response=$this->loginService->login($request->input('username'),$request->input('password'));
         if($response["code"]==200){
-            if($response["data"]){
-                $request->session()->put('admin',true);
-                return redirect("/dashboard");
-            }
-            else{
-                return redirect("/login");
-            }
+            $request->session()->put('token',$response["data"]);
+            return redirect("/dashboard");
+        }
+        else{
+            return redirect("/login");
         }
     }
 

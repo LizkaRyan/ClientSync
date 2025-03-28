@@ -17,8 +17,10 @@
                         <span class="hide-menu">Dashboard</span>
                     </a>
                     <ul class="collapse">
-                        <li><a th:href="${'/budget/form'}">Insérer Budget</a></li>
-                        <li><a th:href="${'/budget'}">Liste budgets</a></li>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/depense/ticket">Depenses ticket</a></li>
+                        <li><a href="/depense/lead">Depenses lead</a></li>
+                        <li><a href="/seuil">Update seuil</a></li>
                     </ul>
                 </li>
             </ul>

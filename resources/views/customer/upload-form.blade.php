@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Update amount</h4>
-                <form action="/depense/update" method="post">
+                <form action="/customer/upload" method="post" enctype="multipart/form-data">
                     @csrf
 
                     @if ($errors->any())
@@ -19,11 +19,11 @@
                         </div>
                     @endif
 
-                    <label class="m-t-20" for="name">Amount:</label>
+                    <label class="m-t-20" for="name">Upload:</label>
                     <div class="input-group">
-                        <input type="number" id="name" value="{{$amount}}" name="amount" class="form-control">
+                        <input type="file" name="file" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-primary m-t-20">Update</button>
+                    <button type="submit" class="btn btn-primary m-t-20">upload</button>
                 </form>
             </div>
         </div>

@@ -6,6 +6,8 @@ class Chart
 {
     public static function transformIntoDataChart($sumDepenses){
         $labels = [];
+        $data = [];
+        $customerId = [];
         foreach ($sumDepenses as $sumDepense) {
             $labels[] = $sumDepense["customerName"];
             $data[] = $sumDepense["sum"];
@@ -20,6 +22,7 @@ class Chart
 
     public static function transformIntoDataChartSum($sumDepenses){
         $labels = [];
+        $data = [];
         foreach ($sumDepenses as $sumDepense) {
             $labels[] = $sumDepense["budgetName"];
             $data[] = $sumDepense["sum"];
